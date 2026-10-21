@@ -218,3 +218,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project rules
+.env
+data/raw/
+data/processed/
+*.csv
+*.xlsx
+*.dump
+mlruns/
