@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS silver.transactions (
     description      TEXT,
     quantity         INTEGER     NOT NULL,
     invoice_ts       TIMESTAMP   NOT NULL,
-    unit_price       NUMERIC(12,2) NOT NULL,
+    unit_price       NUMERIC(12,4) NOT NULL,
     customer_id      INTEGER,            -- NULL when the source row has no customer
     country          TEXT,
     line_amount      NUMERIC(14,2) NOT NULL,  -- quantity * unit_price
