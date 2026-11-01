@@ -26,3 +26,15 @@
 | Non-positive price | 6,207 rows, 6,136 without a customer, the other 71 have a price of exactly 0 |
 | Customers with more than one country | 13. Part 4 uses the country of the most recent purchase. |
 | Cancellations with positive quantity | 1 (tracked as a warning) |
+
+## Verified in Part 4
+
+| Item | Result |
+|------|--------|
+| Gold customers / products / fact rows | 5,942 / 4,646 / 797,883 |
+| Gold revenue (net of cancellations) | 16,289,439.42, matches silver exactly |
+| Sheet overlap | The two Excel sheets share 22,523 rows (1 to 9 Dec 2010). The duplicate flag removes them, so gold counts them once. |
+| Customers with no purchase, only cancellations | 61, excluded from churn modeling |
+| Month-1 retention | about 15 to 25% for most monthly cohorts |
+| Revenue concentration | Champions are 25% of customers and about 69% of RFM revenue |
+| Dec 2009 cohort | Inflated, because it includes customers who joined before the data starts |
