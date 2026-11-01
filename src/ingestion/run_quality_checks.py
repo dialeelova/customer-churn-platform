@@ -11,7 +11,7 @@ from sqlalchemy import text
 
 from load_bronze import get_engine
 
-CHECKS_FILE = Path("sql/quality/silver_checks.sql")
+CHECKS_FILE = Path(sys.argv[1] if len(sys.argv) > 1 else "sql/quality/silver_checks.sql")
 
 
 def main():
