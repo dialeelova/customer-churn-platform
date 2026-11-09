@@ -38,3 +38,12 @@
 | Month-1 retention | about 15 to 25% for most monthly cohorts |
 | Revenue concentration | Champions are 25% of customers and about 69% of RFM revenue |
 | Dec 2009 cohort | Inflated, because it includes customers who joined before the data starts |
+
+## Verified in Part 6
+
+| Item | Result |
+|------|--------|
+| Feature table | gold.churn_features: 47,933 rows, 16 monthly snapshots (Jun 2010 to Sep 2011), 5,212 customers |
+| Overall churn rate | 50.9%, varying from 38.0% to 62.3% by snapshot, matching the validated definition |
+| Leakage tests | 9 checks in sql/quality/features_checks.sql, including an independent recount of purchase history and an independent recheck of every label |
+| Bug found and fixed | avg_order_value divided spend by all invoices instead of real purchase days. Fixed by dividing by purchase days. |
