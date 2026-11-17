@@ -15,7 +15,7 @@ A retention team at an online retailer with a limited campaign budget. They can 
 
 ## Success metrics
 **Model metrics**
-- PR-AUC (main metric, because churners are a minority)
+- ROC-AUC and lift in the top 10% (main metrics). Churn is about half of all rows, so PR-AUC is reported but is not the headline.
 - Recall among the 10% highest-risk customers
 - Brier score (are the probabilities trustworthy?)
 
