@@ -1,4 +1,4 @@
-pandas
+pandas<3
 openpyxl
 sqlalchemy
 psycopg2-binary
@@ -9,3 +9,7 @@ matplotlib
 seaborn
 scipy
 nbformat
+xgboost
+scikit-learn
+lifelines
+lifetimes
