@@ -12,3 +12,4 @@ nbformat
 xgboost
 scikit-learn
 lifelines
+lifetimes
