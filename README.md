@@ -78,7 +78,7 @@ Edit `.env` with your PostgreSQL settings, download the dataset and build the wa
 | Part | Topic | Status |
 |------|-------|--------|
 | 0 to 7 | Setup, scoping, warehouse, ingestion, SQL analytics, EDA, features, modeling | Done |
-| 8 | Interpretation and business impact | In progress |
+| 8 | Interpretation and business impact | Done |
 | 9 | Streamlit dashboard | Planned |
 | 10 | API and Docker | Planned |
 | 11 | Tests, CI and experiment tracking | Planned |
