@@ -88,6 +88,3 @@ Edit `.env` with your PostgreSQL settings, download the dataset and build the wa
 
 One retailer, about two years of data, and no marketing or support data. The training window contains no December, so the early test months are the hardest. Value estimates cover only customers with at least one repeat purchase.
 
-## License
-
-MIT
