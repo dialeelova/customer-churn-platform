@@ -68,18 +68,21 @@ with tab_list:
     cols = ["customer_id", "country", "risk_rank", "risk_decile", "observed_churn_rate",
             "recency_days", "orders_all", "spend_180d", "revenue_at_risk"]
     show = view[cols].rename(columns={"observed_churn_rate": "decile_churn_rate"})
-    st.dataframe(show, use_container_width=True, hide_index=True)
+    st.dataframe(show, width="stretch", hide_index=True)
     st.download_button("Download selection as CSV", show.to_csv(index=False).encode("utf-8"),
                        file_name="customers_to_contact.csv", mime="text/csv")
 
 with tab_charts:
     left, right = st.columns(2)
-    by_decile = df.groupby("risk_decile").agg(customers=("customer_id", "count"),
+    by_decile = df.groupby("risk_decile").agg(avg_spend_180d=("spend_180d", "mean"),
                                               revenue_at_risk=("revenue_at_risk", "sum"))
-    left.subheader("Customers by risk decile")
-    left.bar_chart(by_decile["customers"])
+    left.subheader("Average spend per customer by risk decile")
+    left.bar_chart(by_decile["avg_spend_180d"])
+    left.caption("Spend over the last 180 days. The highest-risk customers tend to be low spenders.")
     right.subheader("Revenue at risk by decile")
     right.bar_chart(by_decile["revenue_at_risk"])
+    right.caption("Revenue at risk is not highest in decile 1: low churn among big spenders still adds up. "
+                  "Targeting by risk alone would miss much of the value.")
     st.subheader("Observed churn rate by decile (walk-forward test)")
     st.bar_chart(pd.Series(OBSERVED_CHURN, name="churn rate"))
 
@@ -94,5 +97,6 @@ with tab_lookup:
         a.metric("Risk rank", f"{int(r['risk_rank']):,} of {len(df):,}")
         b.metric("Risk decile", int(r["risk_decile"]))
         c.metric("Decile churn rate", f"{r['observed_churn_rate']:.0%}")
-        st.write(row[["country", "recency_days", "orders_all", "spend_all", "spend_180d",
-                      "avg_gap_days", "cancel_invoices"]].T.rename(columns={row.index[0]: "value"}))
+        detail = row[["country", "recency_days", "orders_all", "spend_all", "spend_180d",
+                      "avg_gap_days", "cancel_invoices"]].iloc[0]
+        st.table(detail.astype(str).rename("value").to_frame())
