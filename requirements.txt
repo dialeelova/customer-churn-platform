@@ -18,3 +18,5 @@ streamlit
 fastapi
 uvicorn
 joblib
+pytest
+httpx
