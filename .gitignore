@@ -227,3 +227,4 @@ data/processed/
 *.xlsx
 *.dump
 mlruns/
+models/

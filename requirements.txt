@@ -15,3 +15,8 @@ lifelines
 lifetimes
 shap
 streamlit
+fastapi
+uvicorn
+joblib
+pytest
+httpx
