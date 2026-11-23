@@ -1,8 +1,14 @@
+# Local demo stack: PostgreSQL + the churn risk API.
+# NOT TESTED: written on a machine without Docker. Treat it as a starting point.
+# Before building, create the model file (it is not stored in Git):
+#   py -m src.models.train_final
+# The database starts EMPTY. Load the warehouse into it (see data/README.md)
+# before calling /score. /predict works without any data.
 services:
   db:
     image: postgres:17
     environment:
-      POSTGRES_PASSWORD: ${PGPASSWORD:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: churn_dw
     ports:
       - "5434:5432"
@@ -16,7 +22,7 @@ services:
       PGPORT: "5432"
       PGDATABASE: churn_dw
       PGUSER: postgres
-      PGPASSWORD: ${PGPASSWORD:-postgres}
+      PGPASSWORD: ${POSTGRES_PASSWORD:-postgres}
     ports:
       - "8000:8000"
     depends_on:
